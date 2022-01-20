@@ -216,7 +216,8 @@ class AccountMove(models.Model):
             linea_num += 1
 
             tipo_producto = "B"
-            if linea.product_id.type == 'service':
+            service_types = ["service", "product-service"]
+            if linea.product_id.type in service_types:
                 tipo_producto = "S"
             precio_unitario = linea.price_unit * (100-linea.discount) / 100
             precio_sin_descuento = linea.price_unit
